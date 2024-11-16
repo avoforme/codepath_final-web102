@@ -50,6 +50,11 @@ const CommentSection = ({ postid }) => {
     }
   };
 
+  // Handle deleting a comment
+  const handleDeleteComment = (commentId) => {
+    setComments((prevComments) => prevComments.filter(comment => comment.commentid !== commentId));
+  };
+
   return (
     <div className="comment-section">
       <h3>Comments:</h3>
@@ -64,6 +69,7 @@ const CommentSection = ({ postid }) => {
             createdAt={comment.created_at}
             content={comment.content}
             initialVote={comment.vote}
+            onDelete={handleDeleteComment} // Pass onDelete handler to Comment
           />
         ))
       ) : (

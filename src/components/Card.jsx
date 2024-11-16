@@ -29,6 +29,9 @@ const Card = ({ id, title, content, vote, image, created_at, onVoteChange }) => 
             <Link to={'/moreInfo/' + id}>
                 <button>See more</button>
             </Link>
+            <Link to={'/editPost/' + id}>
+                <button>Edit post</button>
+            </Link>
         </div>
     );
 };
