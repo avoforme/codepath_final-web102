@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../client';
+import './styles/Post.css';
 
 const Post = () => {
     // Extract the post ID from the URL parameters

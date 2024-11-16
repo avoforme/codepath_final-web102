@@ -10,7 +10,7 @@ const Navbar = () => {
         <ul className="nav-links">
           <Link to={`/`}> Home </Link>
           <Link to={`/createPost`}> Create new post </Link>
-          <Link to={`/read`}> See all players </Link>
+          <Link to={`/`}> See all posts </Link>
           {/* <Link to={`/contact`}> Contact </Link> */}
         </ul>
       </nav>

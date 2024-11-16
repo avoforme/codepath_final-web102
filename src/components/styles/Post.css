@@ -1,0 +1,7 @@
+.post-image {
+    width: 100%; /* Adjust width as needed */
+    max-width: 300px; /* Limit the maximum width */
+    height: auto; /* Keep the aspect ratio */
+    display: block; /* Remove any inline display issues */
+    margin-top: 10px; /* Optional, to add some spacing from the content */
+}
