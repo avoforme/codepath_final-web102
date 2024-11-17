@@ -8,6 +8,7 @@ import CreatePost from './pages/CreatePost.jsx'
 import EditPost from './pages/EditPost.jsx'
 import Post from './components/Post.jsx'
 import NotFound from './pages/NotFound.jsx'
+import SettingsPage from './pages/SettingsPage.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -33,7 +34,13 @@ createRoot(document.getElementById('root')).render(
             path="/moreInfo/:id"
             element={<Post />}
           />
-          
+
+          <Route
+            index={false}
+            path="/settings"
+            element={<SettingsPage />}
+          />
+
           <Route path="*" element={<NotFound />} />
 
         </Route>

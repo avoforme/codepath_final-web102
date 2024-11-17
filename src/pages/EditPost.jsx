@@ -3,19 +3,17 @@ import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 
 const EditPost = () => {
-    // Get the id of the post to edit from the URL
     let params = useParams();
     let id = params.id;
 
-    // Initialize the state for the post details
     const [post, setPost] = useState({
         title: "",
         content: "",
         vote: 0,
         image: ""
     });
+    const [inputSecretKey, setInputSecretKey] = useState(""); // For secret key input
 
-    // Fetch the post data when the component mounts
     useEffect(() => {
         const fetchPost = async () => {
             const { data, error } = await supabase
@@ -34,7 +32,6 @@ const EditPost = () => {
         fetchPost();
     }, [id]);
 
-    // Handle form input changes
     const handleChange = (event) => {
         const { name, value, type } = event.target;
         setPost((prev) => ({
@@ -43,87 +40,106 @@ const EditPost = () => {
         }));
     };
 
-    // Update the post in the database
     const updatePost = async (event) => {
         event.preventDefault();
-        const { title, content, vote, image } = post;
-        const { error } = await supabase
+    
+        const { data, error } = await supabase
             .from('Post')
-            .update({ title, content, vote, image })
+            .select('secret_key')
+            .eq('id', id)
+            .single();
+    
+        if (error || data.secret_key !== inputSecretKey) {
+            alert('Incorrect Secret Key!');
+            return;
+        }
+    
+        const { error: updateError } = await supabase
+            .from('Post')
+            .update({ title: post.title, content: post.content, vote: post.vote, image: post.image })
             .eq('id', id);
-
-        if (error) {
-            console.error('Error updating post:', error);
+    
+        if (updateError) {
+            console.error('Error updating post:', updateError);
         } else {
-            window.location = "/editPost"; // Redirect after successful update
+            window.location.href = `/moreInfo/${id}`; // Use `href` to ensure proper navigation
         }
     };
-
-    // Delete the post from the database
+    
     const deletePost = async (event) => {
         event.preventDefault();
-        const { error } = await supabase
+    
+        const { data, error } = await supabase
+            .from('Post')
+            .select('secret_key')
+            .eq('id', id)
+            .single();
+    
+        if (error || data.secret_key !== inputSecretKey) {
+            alert('Incorrect Secret Key!');
+            return;
+        }
+    
+        const { error: deleteError } = await supabase
             .from('Post')
             .delete()
             .eq('id', id);
-
-        if (error) {
-            console.error('Error deleting post:', error);
+    
+        if (deleteError) {
+            console.error('Error deleting post:', deleteError);
         } else {
-            window.location = "/read"; // Redirect after successful deletion
+            window.location.href = "/"; // Use `href` to ensure proper navigation
         }
     };
+    
 
     return (
         <div>
             <h1>Edit Post</h1>
-            <h3>Fill out the form to edit your post</h3>
-            <div>
-                <form onSubmit={updatePost}>
-                    <label htmlFor="title">Title</label> <br />
-                    <input 
-                        type="text" 
-                        id="title" 
-                        name="title" 
-                        value={post.title} 
-                        onChange={handleChange} 
-                    />
-                    <br /><br />
+            <form onSubmit={updatePost}>
+                <label htmlFor="title">Title</label> <br />
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={post.title}
+                    onChange={handleChange}
+                />
+                <br /><br />
 
-                    <label htmlFor="content">Content</label><br />
-                    <textarea 
-                        id="content" 
-                        name="content" 
-                        value={post.content} 
-                        onChange={handleChange}
-                    />
-                    <br /><br />
+                <label htmlFor="content">Content</label> <br />
+                <textarea
+                    id="content"
+                    name="content"
+                    value={post.content}
+                    onChange={handleChange}
+                />
+                <br /><br />
 
-                    <label htmlFor="vote">Vote</label><br />
-                    <input 
-                        type="number" 
-                        id="vote" 
-                        name="vote" 
-                        value={post.vote} 
-                        onChange={handleChange}
-                    />
-                    <br /><br />
+                <label htmlFor="image">Image URL</label><br />
+                <input
+                    type="text"
+                    id="image"
+                    name="image"
+                    value={post.image}
+                    onChange={handleChange}
+                />
+                <br /><br />
 
-                    <label htmlFor="image">Image URL</label><br />
-                    <input 
-                        type="text" 
-                        id="image" 
-                        name="image" 
-                        value={post.image} 
-                        onChange={handleChange}
-                    />
-                    <br /><br />
+                <label htmlFor="secret_key">Enter Secret Key</label><br />
+                <input
+                    type="password"
+                    id="secret_key"
+                    name="secret_key"
+                    value={inputSecretKey}
+                    onChange={(e) => setInputSecretKey(e.target.value)}
+                />
+                <br /><br />
 
-                    <input type="submit" value="Update Post" />
-                </form>
+                <input type="submit" value="Update Post" />
+            </form>
 
-                <button className="deleteButton" onClick={deletePost}>Delete Post</button>
-            </div>
+            <button className="deleteButton" onClick={deletePost}>Delete Post</button>
         </div>
     );
 };
