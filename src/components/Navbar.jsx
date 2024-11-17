@@ -1,9 +1,10 @@
 import React from 'react';
 import './styles/Navbar.css';
 import { Outlet, Link } from "react-router-dom";
+import { useTheme } from '../ThemeContext'; // Access theme from context
 
-
-const Navbar = () => {
+function Navbar() {
+  const { theme } = useTheme(); 
   return (
     <div>
       <nav className="side-navbar">

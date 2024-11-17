@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../client";
-import "./styles/Post.css";
 import CommentSection from "./CommentSection";
 const Post = () => {
   // Extract the post ID from the URL parameters
@@ -56,7 +55,16 @@ const Post = () => {
         <button onClick={() => updateVote(-1)}>Downvote</button>
       </div>
       {post.image && (
-        <img src={post.image} alt={post.title} className="post-image" />
+      <img 
+      src={post.image} 
+      alt={post.title} 
+      style={{
+        width: '100%', 
+        maxWidth: '300px', 
+        marginTop: '10px'
+      }} 
+    />
+    
       )}
       <CommentSection postid={id} />
     </div>

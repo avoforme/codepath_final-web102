@@ -1,51 +1,40 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar.jsx'
-import CreatePost from './pages/CreatePost.jsx'
-import EditPost from './pages/EditPost.jsx'
-import Post from './components/Post.jsx'
-import NotFound from './pages/NotFound.jsx'
-import SettingsPage from './pages/SettingsPage.jsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './ThemeContext'; // Import ThemeProvider
+import Navbar from './components/Navbar.jsx';
+import CreatePost from './pages/CreatePost.jsx';
+import EditPost from './pages/EditPost.jsx';
+import Post from './components/Post.jsx';
+import NotFound from './pages/NotFound.jsx';
+import SettingsPage from './pages/SettingsPage.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navbar />}>
-          <Route index={true} element={<App />} />
-
-          <Route
-            index={false}
-            path="/createPost"
-            element={<CreatePost />}
-          />
-
-          <Route
-            index={false}
-            path="/editPost/:id"
-            element={<EditPost />}
-          />
+    <ThemeProvider>
+      <BrowserRouter>
+        {/* Navbar is placed outside the Routes so it's always visible */}
+        <Navbar />
+        <Routes>
+          {/* Home route */}
+          <Route path="/" element={<App />} />
           
-          <Route
-            index={false}
-            path="/moreInfo/:id"
-            element={<Post />}
-          />
-
-          <Route
-            index={false}
-            path="/settings"
-            element={<SettingsPage />}
-          />
-
+          {/* Create and Edit Post routes */}
+          <Route path="/createPost" element={<CreatePost />} />
+          <Route path="/editPost/:id" element={<EditPost />} />
+          
+          {/* More Info Post route */}
+          <Route path="/moreInfo/:id" element={<Post />} />
+          
+          {/* Settings Page */}
+          <Route path="/settings" element={<SettingsPage />} />
+          
+          {/* Catch-all for 404 */}
           <Route path="*" element={<NotFound />} />
-
-        </Route>
-        
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   </StrictMode>
-)
+);
