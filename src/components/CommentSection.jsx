@@ -47,6 +47,8 @@ const CommentSection = ({ postid }) => {
       setComments((prevComments) => [data[0], ...prevComments]);
       setNewComment(''); // Clear the new comment input
       setNewCommentVote(0); // Reset the vote for the new comment
+      window.location.href = `/moreInfo/${postid}`; // Use `href` to ensure proper navigation
+
     }
   };
 
