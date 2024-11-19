@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { supabase } from '../client'; // import your supabase instance
+import { supabase } from '../client'; // Import your Supabase instance
+import './CreatePost.css'; // Import the CSS file for styling
 
 const CreatePost = () => {
     const [post, setPost] = useState({
@@ -47,49 +48,57 @@ const CreatePost = () => {
     };
 
     return (
-        <div>
+        <div className="create-post-container">
             <h1>Create a New Post</h1>
-            <form onSubmit={createPost}>
-                <label htmlFor="title">Title</label> <br />
-                <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    value={post.title}
-                    onChange={handleChange}
-                />
-                <br /><br />
+            <form onSubmit={createPost} className="create-post-form">
+                <div className="form-group">
+                    <label htmlFor="title">Title</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        value={post.title}
+                        onChange={handleChange}
+                        placeholder="Enter the post title"
+                    />
+                </div>
 
-                <label htmlFor="content">Content</label> <br />
-                <textarea
-                    id="content"
-                    name="content"
-                    value={post.content}
-                    onChange={handleChange}
-                />
-                <br /><br />
+                <div className="form-group">
+                    <label htmlFor="content">Content</label>
+                    <textarea
+                        id="content"
+                        name="content"
+                        value={post.content}
+                        onChange={handleChange}
+                        placeholder="Write the post content"
+                    />
+                </div>
 
-                <label htmlFor="image">Image URL</label> <br />
-                <input
-                    type="text"
-                    id="image"
-                    name="image"
-                    value={post.image}
-                    onChange={handleChange}
-                />
-                <br /><br />
+                <div className="form-group">
+                    <label htmlFor="image">Image URL</label>
+                    <input
+                        type="text"
+                        id="image"
+                        name="image"
+                        value={post.image}
+                        onChange={handleChange}
+                        placeholder="Paste the image URL"
+                    />
+                </div>
 
-                <label htmlFor="secret_key">Secret Key</label> <br />
-                <input
-                    type="password"
-                    id="secret_key"
-                    name="secret_key"
-                    value={post.secret_key}
-                    onChange={handleChange}
-                />
-                <br /><br />
+                <div className="form-group">
+                    <label htmlFor="secret_key">Secret Key</label>
+                    <input
+                        type="password"
+                        id="secret_key"
+                        name="secret_key"
+                        value={post.secret_key}
+                        onChange={handleChange}
+                        placeholder="Enter a secret key"
+                    />
+                </div>
 
-                <input type="submit" value="Submit" />
+                <button type="submit" className="submit-button">Submit</button>
             </form>
         </div>
     );

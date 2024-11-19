@@ -2,6 +2,8 @@ import { supabase } from './client.js';
 import { useState, useEffect } from 'react';
 import Card from './components/Card'; // Ensure you have a Card component to display post details
 import './App.css';
+import logo from "/nyancat.gif"; // Add your logo path here
+
 const App = () => {
   const [posts, setPosts] = useState([]);
   const [sortOption, setSortOption] = useState('created_at'); // Default sort by created time
@@ -49,26 +51,33 @@ const App = () => {
 
   return (
       <div className="App">
-          <h1>Post List</h1>
+          <h1>Post About Cats!</h1>
+        <div className="logo-container">
+            <img src={logo} alt="Logo" />
+        </div>
+        {/* Search Input */}
+        <div className="search-container">
+            <input
+                type="text"
+                placeholder="Search by title..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="styled-input"
+            />
+        </div>
 
-          {/* Search Input */}
-          <input
-              type="text"
-              placeholder="Search by title..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              style={{ marginBottom: '20px', padding: '10px', width: '300px' }}
-          />
+        {/* Sorting Dropdown */}
+        <div className="sort-container">
+            <select
+                value={sortOption}
+                onChange={(e) => setSortOption(e.target.value)}
+                className="styled-select"
+            >
+                <option value="created_at">Sort by Created Time</option>
+                <option value="vote">Sort by Upvotes</option>
+            </select>
+        </div>
 
-          {/* Sorting Dropdown */}
-          <select
-              value={sortOption}
-              onChange={(e) => setSortOption(e.target.value)}
-              style={{ marginBottom: '20px', padding: '10px', width: '200px' }}
-          >
-              <option value="created_at">Sort by Created Time</option>
-              <option value="vote">Sort by Upvotes</option>
-          </select>
 
           {/* Render Posts */}
           <div className="ReadPosts">

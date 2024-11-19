@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { supabase } from '../client';
-import { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+
+import './EditPost.css'; // Link to your CSS file
 
 const EditPost = () => {
     let params = useParams();
@@ -42,104 +44,106 @@ const EditPost = () => {
 
     const updatePost = async (event) => {
         event.preventDefault();
-    
+
         const { data, error } = await supabase
             .from('Post')
             .select('secret_key')
             .eq('id', id)
             .single();
-    
+
         if (error || data.secret_key !== inputSecretKey) {
             alert('Incorrect Secret Key!');
             return;
         }
-    
+
         const { error: updateError } = await supabase
             .from('Post')
             .update({ title: post.title, content: post.content, vote: post.vote, image: post.image })
             .eq('id', id);
-    
+
         if (updateError) {
             console.error('Error updating post:', updateError);
         } else {
-            window.location.href = `/moreInfo/${id}`; // Use `href` to ensure proper navigation
+            window.location.href = `/moreInfo/${id}`;
         }
     };
-    
+
     const deletePost = async (event) => {
         event.preventDefault();
-    
+
         const { data, error } = await supabase
             .from('Post')
             .select('secret_key')
             .eq('id', id)
             .single();
-    
+
         if (error || data.secret_key !== inputSecretKey) {
             alert('Incorrect Secret Key!');
             return;
         }
-    
+
         const { error: deleteError } = await supabase
             .from('Post')
             .delete()
             .eq('id', id);
-    
+
         if (deleteError) {
             console.error('Error deleting post:', deleteError);
         } else {
-            window.location.href = "/"; // Use `href` to ensure proper navigation
+            window.location.href = "/";
         }
     };
-    
 
     return (
-        <div>
-            <h1>Edit Post</h1>
-            <form onSubmit={updatePost}>
-                <label htmlFor="title">Title</label> <br />
+        <div className="edit-post-container">
+            <h1 className="edit-post-title">Edit Post</h1>
+            <form className="edit-post-form" onSubmit={updatePost}>
+                <label htmlFor="title">Title</label>
                 <input
                     type="text"
                     id="title"
                     name="title"
                     value={post.title}
                     onChange={handleChange}
+                    className="input-field"
                 />
-                <br /><br />
 
-                <label htmlFor="content">Content</label> <br />
+                <label htmlFor="content">Content</label>
                 <textarea
                     id="content"
                     name="content"
                     value={post.content}
                     onChange={handleChange}
+                    className="textarea-field"
                 />
-                <br /><br />
 
-                <label htmlFor="image">Image URL</label><br />
+                <label htmlFor="image">Image URL</label>
                 <input
                     type="text"
                     id="image"
                     name="image"
                     value={post.image}
                     onChange={handleChange}
+                    className="input-field"
                 />
-                <br /><br />
 
-                <label htmlFor="secret_key">Enter Secret Key</label><br />
+                <label htmlFor="secret_key">Enter Secret Key</label>
                 <input
                     type="password"
                     id="secret_key"
                     name="secret_key"
                     value={inputSecretKey}
                     onChange={(e) => setInputSecretKey(e.target.value)}
+                    className="input-field"
                 />
-                <br /><br />
 
-                <input type="submit" value="Update Post" />
+                <div className="button-group">
+                    <input type="submit" value="Update Post" className="update-button" />
+                    <button className="delete-button" onClick={deletePost}>
+                        Delete Post
+                    </button>
+                </div>
             </form>
-
-            <button className="deleteButton" onClick={deletePost}>Delete Post</button>
         </div>
     );
 };

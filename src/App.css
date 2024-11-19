@@ -3,4 +3,63 @@
   text-align: center;
 }
 
+.ReadPosts{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center; /* Center the cards horizontally */
+  align-items: flex-start; /* Align the cards at the top */
+  padding: 16px;
+
+}
+
+/* Input and Dropdown Containers */
+.search-container,
+.sort-container {
+    margin-bottom: 20px;
+    text-align: center; /* Center-align the inputs */
+}
+
+/* Styled Input */
+.styled-input {
+    width: 300px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease;
+}
+
+.styled-input:focus {
+    border-color: #007bff; /* Highlight border */
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2); /* Focus shadow */
+    outline: none;
+}
+
+/* Styled Dropdown */
+.styled-select {
+    width: 200px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* Rounded corners */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease;
+    appearance: none; /* Remove default dropdown arrow */
+    background-image: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNjY2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNnB4IiBoZWlnaHQ9IjE2cHgiIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZD0iTTEgNGw3IDcgNy03eiIvPjwvc3ZnPg=='); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.styled-select:hover {
+    cursor: pointer;
+}
+
+.styled-select:focus {
+    border-color: #007bff; /* Highlight border */
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2); /* Focus shadow */
+    outline: none;
+}
 
