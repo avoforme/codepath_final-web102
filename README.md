@@ -29,24 +29,17 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [ ] Improve the design the web app
+* [x] Improve the design the web app
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://drive.google.com/file/d/1alditE6dwxNNfdUvQWGdL3O3nLcIl4cr/view?usp=share_link' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-<!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
 
-## Notes
+GIF created with Kap  
 
-Describe any challenges encountered while building the app.
 
 ## License
 
