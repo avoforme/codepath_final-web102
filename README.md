@@ -35,9 +35,8 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-[Watch demo](https://drive.google.com/file/d/1alditE6dwxNNfdUvQWGdL3O3nLcIl4cr/view?usp=share_link)
-
-GIF created with Kap  
+[Watch demo](https://youtu.be/5_26M-UEByU)
+ 
 
 ## Screenshot demo
 <div align="center">
