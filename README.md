@@ -4,7 +4,7 @@ Submitted by: **Phuong-Thanh Ho**
 
 This web app: **A forum for people who love cats to post**
 
-Time spent: **10** hours spent in total
+Time spent: **12** hours spent in total
 
 ## Required Features
 
@@ -39,6 +39,15 @@ Here's a walkthrough of implemented user stories:
 
 GIF created with Kap  
 
+## Screenshot demo
+<div align="center">
+  <img src="public/1.png" alt="Home">
+  <img src="public/2.png" alt="Create post">
+  <img src="public/2.5.png" alt="Change background color">
+  <img src="public/3.png" alt="Home">
+  <img src="public/4.png" alt="Try commenting">
+  <img src="public/5.png" alt="Comment">
+</div>
 
 ## License
 
