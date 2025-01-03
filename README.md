@@ -43,8 +43,6 @@ Here's a walkthrough of implemented user stories:
   <img src="public/1.png" alt="Home">
   <img src="public/2.png" alt="Create post">
   <img src="public/2.5.png" alt="Change background color">
-  <img src="public/3.png" alt="Home">
-  <img src="public/4.png" alt="Try commenting">
   <img src="public/5.png" alt="Comment">
 </div>
 
