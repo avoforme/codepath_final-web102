@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../client'; // Ensure you have a supabase client configured
 import Comment from './Comment'; // Import the Comment component
-
+import './styles/CommentSection.css'; // Add your CSS file path
 const CommentSection = ({ postid }) => {
   const [comments, setComments] = useState([]); // Store comments for the post
   const [newComment, setNewComment] = useState(''); // Store the new comment content
@@ -93,7 +93,7 @@ const CommentSection = ({ postid }) => {
           }}
         />
         <div style={{ display: 'flex', gap: '10px' }}>
-          <button onClick={handleAddComment} style={{ padding: '10px' }}>
+          <button onClick={handleAddComment} style={{ padding: '10px' }} className='comment-button'>
             Submit Comment
           </button>
           <select

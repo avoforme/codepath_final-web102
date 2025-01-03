@@ -28,12 +28,12 @@
 /* Input Fields */
 .input-field,
 .textarea-field {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    transition: border-color 0.2s;
 }
 
 .input-field:focus,

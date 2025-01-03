@@ -51,7 +51,7 @@ const Post = () => {
       <p className="content">{post.content}</p>
       <div>
         <p>Votes: {currentVote}</p>
-        <button onClick={() => updateVote(1)}>Upvote</button>
+        <button onClick={() => updateVote(1)} style={{ margin: '10px' }} >Upvote</button> 
         <button onClick={() => updateVote(-1)}>Downvote</button>
       </div>
       {post.image && (
@@ -61,7 +61,8 @@ const Post = () => {
       style={{
         width: '100%', 
         maxWidth: '300px', 
-        marginTop: '10px'
+        marginTop: '10px',
+        marginBottom: '10px'
       }} 
     />
     

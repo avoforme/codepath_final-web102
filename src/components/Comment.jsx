@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { supabase } from '../client'; // Ensure you have a supabase client configured
-
+import './styles/Comment.css'; // Add your CSS file path
 const Comment = ({ postId, commentId, createdAt, content, initialVote, onDelete }) => {
   const [vote, setVote] = useState(initialVote);
 

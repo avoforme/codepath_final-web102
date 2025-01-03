@@ -38,6 +38,8 @@ const SettingsPage = () => {
           />
           Light
         </label>
+        <br />
+        <br />
         <label>
           <input
             type="radio"
@@ -49,30 +51,7 @@ const SettingsPage = () => {
           Dark
         </label>
       </div>
-
-      {/* <div className="settings-section">
-        <h3>Home Feed Options</h3>
-        <label>
-          <input
-            type="checkbox"
-            checked={showContent}
-            onChange={(e) => setShowContent(e.target.checked)}
-          />
-          Show Post Content
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={showImages}
-            onChange={(e) => setShowImages(e.target.checked)}
-          />
-          Show Post Images
-        </label>
-      </div> */}
-
-      {/* <button className="save-button" onClick={handleSavePreferences}>
-        Save Preferences
-      </button> */}
+    
     </div>
   );
 };
